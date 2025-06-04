@@ -12,6 +12,7 @@ composeBom = "2025.05.01"
 ksp = "2.0.21-1.0.27" # KSP 版本（与 Kotlin 版本匹配）
 
 hilt = "2.56.2"
+hiltNavigation = "1.2.0"
 room = "2.7.1"
 
 
@@ -39,6 +40,10 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 # Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+
+# Hilt Navigation
+hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+
 
 
 [plugins]
