@@ -29,5 +29,6 @@ fun AppNavigation() {
 
 @Serializable
 object SplashNav
+
 @Serializable
 object MainNav

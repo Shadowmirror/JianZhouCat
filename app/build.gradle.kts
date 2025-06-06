@@ -58,7 +58,7 @@ dependencies {
 
     // Jetpack Compose integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
+    implementation("com.materialkolor:material-kolor:3.0.0-alpha04")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
