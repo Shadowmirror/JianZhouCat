@@ -1,7 +1,9 @@
 package miao.kmirror.jianzhoucat.feature.screen.splash.page
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,7 +36,9 @@ fun SplashScreen(
     }
 
     Box(
-        Modifier.fillMaxSize(),
+        Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         Text("欢迎页面 - Splash Screen - $timeout")
