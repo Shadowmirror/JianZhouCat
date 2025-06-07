@@ -111,13 +111,13 @@ val unspecified_scheme = ColorFamily(
 
 @Composable
 fun JianZhouCatTheme(
-    seedColor: Color,
+    themeColor: Color,
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = rememberDynamicColorScheme(seedColor = seedColor, isDark = darkTheme)
+    val colorScheme = rememberDynamicColorScheme(seedColor = themeColor, isDark = darkTheme)
 
 //    val colorScheme = when {
 //        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {

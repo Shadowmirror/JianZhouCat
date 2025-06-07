@@ -60,6 +60,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("com.materialkolor:material-kolor:3.0.0-alpha04")
 
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

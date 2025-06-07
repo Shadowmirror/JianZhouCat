@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import dagger.hilt.android.AndroidEntryPoint
 import miao.kmirror.jianzhoucat.feature.screen.AppNavigation
 import miao.kmirror.jianzhoucat.feature.screen.global.component.GlobalToastHost
@@ -25,10 +26,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val seedColor by mainAtyViewModel.seedColor.collectAsState()
+            val themeColor by mainAtyViewModel.themeColor.collectAsState()
 
             JianZhouCatTheme(
-                seedColor = seedColor
+                themeColor = Color(themeColor)
             ) {
                 Box(modifier = Modifier.Companion.fillMaxSize()) {
                     AppNavigation()

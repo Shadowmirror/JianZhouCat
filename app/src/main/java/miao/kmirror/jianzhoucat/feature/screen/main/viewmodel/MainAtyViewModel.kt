@@ -2,28 +2,49 @@ package miao.kmirror.jianzhoucat.feature.screen.main.viewmodel
 
 import android.util.Log
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import miao.kmirror.jianzhoucat.data.local.datastore.AppDataStore
+import miao.kmirror.jianzhoucat.data.local.datastore.PreferenceKeyDefault
 import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
-class MainAtyViewModel @Inject constructor() : ViewModel() {
-    private val _seedColor = MutableStateFlow<Color>(Color(0xFFFF0000))
-    val seedColor: StateFlow<Color> = _seedColor.asStateFlow()
+class MainAtyViewModel @Inject constructor(
+    private val appDataStore: AppDataStore,
+) : ViewModel() {
 
-    fun setSeedColor(color: Color) {
-        Log.i("KmirrorTag", "setSeedColor: color alpha = ${color.alpha}, red = ${color.red}, green = ${color.green}, blue = ${color.blue}")
-        _seedColor.value = color
+    val themeColor: StateFlow<Int> = appDataStore
+        .getThemeColorFlow()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = PreferenceKeyDefault.themeColor.toArgb()
+        )
+
+
+    fun setThemeColor(color: Color) {
+        viewModelScope.launch {
+            Log.i("KmirrorTag", "setThemeColor: color alpha = ${color.alpha}, red = ${color.red}, green = ${color.green}, blue = ${color.blue}")
+            appDataStore.setThemeColor(color)
+        }
     }
 
-    fun randomColor(): Color {
-        val red = Random.nextInt(256)
-        val green = Random.nextInt(256)
-        val blue = Random.nextInt(256)
-        return Color(red, green, blue)
+
+    fun getThemeColor() = Color(themeColor.value)
+
+    fun changeCurrentUser() {
+        viewModelScope.launch {
+            if (appDataStore.mCurrentUser.value == 0) {
+                appDataStore.setCurrentUser(1)
+            } else {
+                appDataStore.setCurrentUser(0)
+            }
+        }
     }
 }
