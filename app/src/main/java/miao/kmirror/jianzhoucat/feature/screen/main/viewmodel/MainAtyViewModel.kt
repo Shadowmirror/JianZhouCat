@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import miao.kmirror.jianzhoucat.data.local.datastore.AppDataStore
-import miao.kmirror.jianzhoucat.data.local.datastore.PreferenceKeyDefault
+import miao.kmirror.jianzhoucat.data.local.datastore.PreferenceKey
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,9 +24,8 @@ class MainAtyViewModel @Inject constructor(
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
-            initialValue = PreferenceKeyDefault.themeColor.toArgb()
+            initialValue = PreferenceKey.ThemeColor.default().toArgb()
         )
-
 
     fun setThemeColor(color: Color) {
         viewModelScope.launch {

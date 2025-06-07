@@ -2,15 +2,16 @@ package miao.kmirror.jianzhoucat.data.local.datastore
 
 import androidx.compose.ui.graphics.Color
 
-enum class PreferenceKey {
-    CurrentUser,
-    ThemeColor,
-}
+sealed class PreferenceKey() {
+    object CurrentUser : PreferenceKey() {
+        fun default() = 0
+    }
 
-object PreferenceKeyDefault {
-    val currentUser = 0
-    val themeColor = Color.Red
-}
+    object ThemeColor : PreferenceKey() {
+        fun default() = Color.Red
+    }
 
+    fun name(): String = this::class.java.simpleName
+}
 
 
