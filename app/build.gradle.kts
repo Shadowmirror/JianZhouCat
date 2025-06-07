@@ -61,6 +61,7 @@ dependencies {
     implementation("com.materialkolor:material-kolor:3.0.0-alpha04")
 
     implementation("androidx.datastore:datastore-preferences:1.1.7")
+    implementation("io.coil-kt.coil3:coil-compose:3.2.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

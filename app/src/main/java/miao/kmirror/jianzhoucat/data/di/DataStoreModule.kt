@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineScope
 import miao.kmirror.jianzhoucat.data.local.datastore.AppDataStore
 import javax.inject.Singleton
 
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 object DataStoreModule {
     @Provides
     @Singleton
-    fun provideAppDataStore(@ApplicationContext context: Context): AppDataStore {
-        return AppDataStore(context)
+    fun provideAppDataStore(@ApplicationContext context: Context, applicationScope: CoroutineScope): AppDataStore {
+        return AppDataStore(context, applicationScope)
     }
 }

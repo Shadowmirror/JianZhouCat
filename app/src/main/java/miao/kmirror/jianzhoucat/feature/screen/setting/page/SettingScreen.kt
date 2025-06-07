@@ -1,14 +1,11 @@
 package miao.kmirror.jianzhoucat.feature.screen.setting.page
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -38,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
-import miao.kmirror.jianzhoucat.feature.component.HsvColorPicker
+import miao.kmirror.jianzhoucat.feature.component.HsvColorPickerSquare
 import miao.kmirror.jianzhoucat.feature.screen.main.page.MainActivity
 import miao.kmirror.jianzhoucat.feature.screen.main.viewmodel.MainAtyViewModel
 
@@ -60,6 +57,7 @@ fun SettingScreen() {
             },
         )
     }
+
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -162,7 +160,7 @@ private fun ChangeThemeColorDialog(
                         }
                 )
             }
-            HsvColorPicker(
+            HsvColorPickerSquare(
                 initialColor = rememberColor,
                 modifier = Modifier
                     .padding(20.dp)
@@ -187,23 +185,6 @@ private fun ChangeThemeColorDialog(
                 Text("更改颜色")
             }
             Spacer(modifier = Modifier.height(20.dp))
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun HsvColorPickerPreview() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        HsvColorPicker(
-            modifier = Modifier
-                .fillMaxWidth(0.75f)
-                .aspectRatio(1f)
-        ) { color ->
-            Log.i("KmirrorTag", "HsvColorPickerPreview: color alpha = ${color.alpha}, red = ${color.red}, green = ${color.green}, blue = ${color.blue}")
         }
     }
 }

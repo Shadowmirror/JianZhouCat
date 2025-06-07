@@ -10,7 +10,6 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -24,7 +23,10 @@ import javax.inject.Inject
  * AppDataStore 是一个用于管理应用中偏好设置的类，支持根据当前用户 ID 动态切换数据。
  * 它通过 DataStore 维护当前用户 ID、主题颜色等偏好设置，并支持多用户数据隔离。
  */
-class AppDataStore @Inject constructor(@ApplicationContext private val context: Context) {
+class AppDataStore @Inject constructor(
+    @ApplicationContext private val context: Context,
+    applicationScope: CoroutineScope
+) {
 
     // 创建名为 "AppDataStore" 的 DataStore<Preferences> 实例
     private val Context.appDataStore: DataStore<Preferences> by preferencesDataStore(name = "AppDataStore")
@@ -41,7 +43,7 @@ class AppDataStore @Inject constructor(@ApplicationContext private val context: 
             preferences[intPreferencesKey(PreferenceKey.CurrentUser.name())] ?: defaultUser
         }
         .stateIn(
-            scope = GlobalScope,
+            scope = applicationScope,
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = defaultUser
         )
@@ -55,6 +57,14 @@ class AppDataStore @Inject constructor(@ApplicationContext private val context: 
             userId
         )
     }
+
+    fun getCurrentUserId(): Flow<Int> {
+        return context.appDataStore.getGlobalFlow(
+            key = intPreferencesKey(PreferenceKey.CurrentUser.name()),
+            default = defaultUser
+        )
+    }
+
 
     /**
      * 获取当前用户对应的主题颜色 Flow
@@ -71,9 +81,11 @@ class AppDataStore @Inject constructor(@ApplicationContext private val context: 
      * 设置当前用户的主题颜色，默认为当前 mCurrentUser
      */
     suspend fun setThemeColor(color: Color, userId: Int = mCurrentUser.value) {
-        context.appDataStore.edit { preferences ->
-            preferences[intPreferencesKey(PreferenceKey.ThemeColor.multiName(userId))] = color.toArgb()
-        }
+        context.appDataStore.setUserBasedValue(
+            userId = userId,
+            keyProvider = { intPreferencesKey(PreferenceKey.ThemeColor.multiName(userId)) },
+            value = color.toArgb()
+        )
     }
 
     // -------------------- 私有辅助工具函数 --------------------
