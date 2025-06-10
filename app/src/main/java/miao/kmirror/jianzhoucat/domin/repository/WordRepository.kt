@@ -1,12 +1,10 @@
 package miao.kmirror.jianzhoucat.domin.repository
 
-import miao.kmirror.jianzhoucat.data.local.entity.WordDTO
-import miao.kmirror.jianzhoucat.data.local.entity.WordMemoryDTO
+import miao.kmirror.jianzhoucat.domin.model.WordModel
 
 
 interface WordRepository {
-    suspend fun getAllWords(): List<WordDTO>
-    suspend fun insertWord(wordDTO: WordDTO)
-    suspend fun getAllWordMemory(): List<WordMemoryDTO>
-    suspend fun insertWordMemory(wordMemoryDTO: WordMemoryDTO)
+    suspend fun getAllWords(): List<WordModel>
+    suspend fun updateWord(wordModel: WordModel)
+    suspend fun insertAllWord(wordModelList: List<WordModel>)
 }

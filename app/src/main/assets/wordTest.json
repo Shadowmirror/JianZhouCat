@@ -1,0 +1,198 @@
+[
+  {
+    "word": "abandon",
+    "translate": "放弃",
+    "phoneticSymbol": "[əˈbændən]",
+    "exampleSentence": [
+      {
+        "english": "He abandoned his car.",
+        "chinese": "他抛弃了他的车。"
+      }
+    ],
+    "customMemory": "abandon = a + band + on"
+  },
+  {
+    "word": "ability",
+    "translate": "能力",
+    "phoneticSymbol": null,
+    "exampleSentence": null,
+    "customMemory": null
+  },
+  {
+    "word": "abolish",
+    "translate": "废除",
+    "phoneticSymbol": "[əˈbɒlɪʃ]",
+    "exampleSentence": [],
+    "customMemory": null
+  },
+  {
+    "word": "absorb",
+    "translate": "吸收",
+    "phoneticSymbol": "[əbˈzɔːb]",
+    "exampleSentence": [
+      {
+        "english": "Plants absorb sunlight.",
+        "chinese": "植物吸收阳光。"
+      },
+      {
+        "english": "This sponge absorbs water well.",
+        "chinese": "这个海绵吸水性很好。"
+      }
+    ],
+    "customMemory": "absorb = ab + sorb(吸收)"
+  },
+  {
+    "word": "abstract",
+    "translate": "抽象的",
+    "phoneticSymbol": null,
+    "exampleSentence": null,
+    "customMemory": null
+  },
+  {
+    "word": "abundant",
+    "translate": "丰富的",
+    "phoneticSymbol": "[əˈbʌndənt]",
+    "exampleSentence": [
+      {
+        "english": "The country has abundant resources.",
+        "chinese": "这个国家资源丰富。"
+      }
+    ],
+    "customMemory": null
+  },
+  {
+    "word": "access",
+    "translate": "进入；接近",
+    "phoneticSymbol": "[ˈækses]",
+    "exampleSentence": [],
+    "customMemory": "access to information"
+  },
+  {
+    "word": "accomplish",
+    "translate": "完成",
+    "phoneticSymbol": "[əˈkʌmplɪʃ]",
+    "exampleSentence": [
+      {
+        "english": "She accomplished the mission.",
+        "chinese": "她完成了任务。"
+      },
+      {
+        "english": "They accomplished it together.",
+        "chinese": "他们一起完成了它。"
+      },
+      {
+        "english": "It was a great accomplishment.",
+        "chinese": "那是一个伟大的成就。"
+      }
+    ],
+    "customMemory": null
+  },
+  {
+    "word": "accurate",
+    "translate": "准确的",
+    "phoneticSymbol": null,
+    "exampleSentence": null,
+    "customMemory": "accurate = ac + curate(照顾)"
+  },
+  {
+    "word": "adapt",
+    "translate": "适应",
+    "phoneticSymbol": "[əˈdæpt]",
+    "exampleSentence": [
+      {
+        "english": "He adapted quickly to the new environment.",
+        "chinese": "他很快适应了新环境。"
+      }
+    ],
+    "customMemory": null
+  },
+  {
+    "word": "adequate",
+    "translate": "足够的",
+    "phoneticSymbol": "[ˈædɪkwət]",
+    "exampleSentence": [],
+    "customMemory": null
+  },
+  {
+    "word": "adjust",
+    "translate": "调整",
+    "phoneticSymbol": null,
+    "exampleSentence": null,
+    "customMemory": null
+  },
+  {
+    "word": "admire",
+    "translate": "钦佩",
+    "phoneticSymbol": "[ədˈmaɪə(r)]",
+    "exampleSentence": [
+      {
+        "english": "I admire your courage.",
+        "chinese": "我钦佩你的勇气。"
+      }
+    ],
+    "customMemory": null
+  },
+  {
+    "word": "admit",
+    "translate": "承认",
+    "phoneticSymbol": "[ədˈmɪt]",
+    "exampleSentence": null,
+    "customMemory": null
+  },
+  {
+    "word": "adopt",
+    "translate": "采纳；收养",
+    "phoneticSymbol": "[əˈdɒpt]",
+    "exampleSentence": [
+      {
+        "english": "They adopted a child.",
+        "chinese": "他们收养了一个孩子。"
+      },
+      {
+        "english": "We adopted a new policy.",
+        "chinese": "我们采用了一项新政策。"
+      }
+    ],
+    "customMemory": "adopt = ad + opt(选择)"
+  },
+  {
+    "word": "advance",
+    "translate": "前进；进步",
+    "phoneticSymbol": "[ədˈvɑːns]",
+    "exampleSentence": [],
+    "customMemory": null
+  },
+  {
+    "word": "advise",
+    "translate": "建议",
+    "phoneticSymbol": null,
+    "exampleSentence": null,
+    "customMemory": null
+  },
+  {
+    "word": "affect",
+    "translate": "影响",
+    "phoneticSymbol": "[əˈfekt]",
+    "exampleSentence": [
+      {
+        "english": "The weather affects my mood.",
+        "chinese": "天气影响我的心情。"
+      }
+    ],
+    "customMemory": null
+  },
+  {
+    "word": "afford",
+    "translate": "负担得起",
+    "phoneticSymbol": "[əˈfɔːd]",
+    "exampleSentence": null,
+    "customMemory": "afford = af + ford(渡)"
+  },
+  {
+    "word": "agency",
+    "translate": "代理机构",
+    "phoneticSymbol": "[ˈeɪdʒənsi]",
+    "exampleSentence": [],
+    "customMemory": null
+  }
+]

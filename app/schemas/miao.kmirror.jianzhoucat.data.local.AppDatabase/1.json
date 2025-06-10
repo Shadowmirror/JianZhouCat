@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bd09781139d69a2f96fed835b5797c93",
+    "identityHash": "b0d54ec3ef522cff3fc1ef917d44f09b",
     "entities": [
       {
         "tableName": "WordDTO",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word` TEXT NOT NULL, `translate` TEXT NOT NULL, `phoneticSymbol` TEXT NOT NULL, `exampleSentence` TEXT NOT NULL, PRIMARY KEY(`word`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word` TEXT NOT NULL, `translate` TEXT NOT NULL, `phoneticSymbol` TEXT, `exampleSentence` TEXT, `customMemory` TEXT, PRIMARY KEY(`word`))",
         "fields": [
           {
             "fieldPath": "word",
@@ -23,14 +23,17 @@
           {
             "fieldPath": "phoneticSymbol",
             "columnName": "phoneticSymbol",
-            "affinity": "TEXT",
-            "notNull": true
+            "affinity": "TEXT"
           },
           {
             "fieldPath": "exampleSentence",
             "columnName": "exampleSentence",
-            "affinity": "TEXT",
-            "notNull": true
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "customMemory",
+            "columnName": "customMemory",
+            "affinity": "TEXT"
           }
         ],
         "primaryKey": {
@@ -42,7 +45,7 @@
       },
       {
         "tableName": "WordMemoryDTO",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word` TEXT NOT NULL, `level` INTEGER NOT NULL, PRIMARY KEY(`word`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word` TEXT NOT NULL, `level` INTEGER NOT NULL, `createTime` INTEGER NOT NULL, `rememberCount` INTEGER NOT NULL, `vagueCount` INTEGER NOT NULL, `forgetCount` INTEGER NOT NULL, `updateTime` INTEGER NOT NULL, PRIMARY KEY(`word`))",
         "fields": [
           {
             "fieldPath": "word",
@@ -53,6 +56,36 @@
           {
             "fieldPath": "level",
             "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "createTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rememberCount",
+            "columnName": "rememberCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vagueCount",
+            "columnName": "vagueCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "forgetCount",
+            "columnName": "forgetCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateTime",
+            "columnName": "updateTime",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -67,7 +100,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd09781139d69a2f96fed835b5797c93')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b0d54ec3ef522cff3fc1ef917d44f09b')"
     ]
   }
 }

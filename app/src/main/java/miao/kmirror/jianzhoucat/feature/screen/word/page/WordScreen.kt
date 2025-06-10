@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
@@ -172,12 +173,14 @@ fun WordTitle(
                     .padding(top = 10.dp, start = 20.dp, end = 20.dp)
                     .fillMaxWidth()
             ) {
-                Text(
-                    text = wordModel.phoneticSymbol,
-                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
-                    textAlign = TextAlign.Start,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
+                wordModel.phoneticSymbol?.let {
+                    Text(
+                        text = wordModel.phoneticSymbol,
+                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                        textAlign = TextAlign.Start,
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                }
 
                 Icon(
                     imageVector = Icons.Default.Notifications,
@@ -220,10 +223,23 @@ private fun WordContent(
         modifier = modifier
             .padding(20.dp)
     ) {
-        item {
-            repeat(30) {
+        if (wordModel.exampleSentence.isNullOrEmpty()) {
+            item {
                 Text(
-                    text = wordModel.exampleSentence,
+                    text = "没有例句哦",
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        } else {
+            itemsIndexed(wordModel.exampleSentence) { index, item ->
+                Text(
+                    text = item.english,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Text(
+                    text = item.chinese,
                     color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typography.bodyMedium
                 )

@@ -2,9 +2,13 @@ package miao.kmirror.jianzhoucat.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Random
+import androidx.room.TypeConverters
+import kotlinx.serialization.Serializable
+import miao.kmirror.jianzhoucat.data.local.converter.Converters
 
+@Serializable
 @Entity
+@TypeConverters(Converters::class)
 data class WordDTO(
     /**
      * 单词内容
@@ -15,26 +19,16 @@ data class WordDTO(
      * */
     val translate: String,
     /**
-     * 音标
+     * 音标, Json 中可能没有英标
      * */
-    val phoneticSymbol: String,
+    val phoneticSymbol: String?,
     /**
-     * 例句
+     * 例句, 是 ExampleSentence 数组，也就是 Json 数据, Json 中可能没有例句
      * */
-    val exampleSentence: String
-) {
-    companion object {
-        fun getMock(): WordDTO {
-            return WordDTO(
-                word = "Word${Random().nextInt(4500)}",
-                translate = "translate${Random().nextInt(4500)}",
-                phoneticSymbol = "phoneticSymbol${Random().nextInt(4500)}",
-                exampleSentence = "This is a ${
-                    buildString {
-                        repeat(Random().nextInt(20)) { append("long ") }
-                    }
-                }Sentence ${System.currentTimeMillis()}"
-            )
-        }
-    }
-}
+    val exampleSentence: List<ExampleSentence>?,
+
+    /**
+     * 自定义记忆内容，String 对象， Json 中可能没有
+     * */
+    val customMemory: String?
+)
