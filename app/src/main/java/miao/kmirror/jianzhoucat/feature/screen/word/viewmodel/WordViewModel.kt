@@ -10,11 +10,13 @@ import kotlinx.coroutines.launch
 import miao.kmirror.jianzhoucat.domin.model.WordModel
 import miao.kmirror.jianzhoucat.domin.repository.WordRepository
 import miao.kmirror.jianzhoucat.feature.state.LoadState
+import miao.kmirror.jianzhoucat.utils.TTSHelper
 import javax.inject.Inject
 
 @HiltViewModel
 class WordViewModel @Inject constructor(
-    private val wordRepository: WordRepository
+    private val wordRepository: WordRepository,
+    private val ttsHelper: TTSHelper
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<LoadState>(LoadState.Loading)
@@ -27,7 +29,7 @@ class WordViewModel @Inject constructor(
     val nextWordModel = _nextWordModel.asStateFlow()
 
     fun initData() {
-        if (_uiState.value != LoadState.Success){
+        if (_uiState.value != LoadState.Success) {
             viewModelScope.launch {
                 Log.i("KmirrorTag", "initData: ")
                 _uiState.value = LoadState.Loading
@@ -47,5 +49,9 @@ class WordViewModel @Inject constructor(
             _currentWordModel.value = _nextWordModel.value
             _nextWordModel.value = WordModel.getMock()
         }
+    }
+
+    fun speakWord() {
+        ttsHelper.speak(_currentWordModel.value.word)
     }
 }

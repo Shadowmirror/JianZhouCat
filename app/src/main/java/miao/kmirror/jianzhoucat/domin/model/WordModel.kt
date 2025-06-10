@@ -12,9 +12,9 @@ data class WordModel(
     companion object {
         fun getMock(): WordModel {
             return WordModel(
-                word = "Word${Random().nextInt(4500)}",
-                translate = "translate${Random().nextInt(4500)}",
-                phoneticSymbol = "phoneticSymbol${Random().nextInt(4500)}",
+                word = "Word ${Random().nextInt(4500)}",
+                translate = "translate ${Random().nextInt(4500)}",
+                phoneticSymbol = "phoneticSymbol ${Random().nextInt(4500)}",
                 exampleSentence = "This is a ${
                     buildString {
                         repeat(Random().nextInt(20)) { append("long ") }

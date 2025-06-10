@@ -16,11 +16,16 @@ import miao.kmirror.jianzhoucat.feature.screen.AppNavigation
 import miao.kmirror.jianzhoucat.feature.screen.global.component.GlobalToastHost
 import miao.kmirror.jianzhoucat.feature.screen.main.viewmodel.MainAtyViewModel
 import miao.kmirror.jianzhoucat.ui.theme.JianZhouCatTheme
+import miao.kmirror.jianzhoucat.utils.TTSHelper
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val mainAtyViewModel by viewModels<MainAtyViewModel>()
+
+    @Inject
+    lateinit var ttsHelper: TTSHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,4 +43,11 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    override fun onDestroy() {
+        ttsHelper.shutdown()
+        super.onDestroy()
+    }
+
+
 }

@@ -83,7 +83,8 @@ fun WordScreen(
                 ) {
                     WordTitle(
                         wordModel = word,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        speakWord = { wordViewModel.speakWord() }
                     )
                     WordSpaceLine()
                     WordContent(
@@ -136,6 +137,7 @@ private fun WordScreenContentPreview() {
 @Composable
 fun WordTitle(
     wordModel: WordModel = WordModel.getMock(),
+    speakWord: () -> Unit = {},
     modifier: Modifier
 ) {
     Box(
@@ -183,6 +185,9 @@ fun WordTitle(
                     modifier = Modifier
                         .padding(start = 2.dp)
                         .size(12.dp)
+                        .clickable {
+                            speakWord()
+                        }
                 )
             }
             Text(
@@ -216,13 +221,13 @@ private fun WordContent(
             .padding(20.dp)
     ) {
         item {
-          repeat(30) {
-              Text(
-                  text = wordModel.exampleSentence,
-                  color = MaterialTheme.colorScheme.onBackground,
-                  style = MaterialTheme.typography.bodyMedium
-              )
-          }
+            repeat(30) {
+                Text(
+                    text = wordModel.exampleSentence,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
         }
     }
 }
