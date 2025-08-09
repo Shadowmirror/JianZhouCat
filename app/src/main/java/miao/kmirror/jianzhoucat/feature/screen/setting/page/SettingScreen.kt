@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -35,6 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.lalilu.RemixIcon
+import com.lalilu.remixicon.System
+import com.lalilu.remixicon.system.closeFill
 import miao.kmirror.jianzhoucat.feature.component.HsvColorPickerSquare
 import miao.kmirror.jianzhoucat.feature.screen.main.page.MainActivity
 import miao.kmirror.jianzhoucat.feature.screen.main.viewmodel.MainAtyViewModel
@@ -150,7 +151,7 @@ private fun ChangeThemeColorDialog(
             ) {
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
-                    imageVector = Icons.Default.Close,
+                    imageVector = RemixIcon.System.closeFill,
                     contentDescription = null,
                     modifier = Modifier
                         .size(48.dp)

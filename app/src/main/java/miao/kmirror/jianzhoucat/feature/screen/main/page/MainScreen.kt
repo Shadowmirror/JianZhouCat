@@ -3,9 +3,6 @@ package miao.kmirror.jianzhoucat.feature.screen.main.page
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -22,6 +19,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.lalilu.RemixIcon
+import com.lalilu.remixicon.Document
+import com.lalilu.remixicon.System
+import com.lalilu.remixicon.document.articleFill
+import com.lalilu.remixicon.system.settingsFill
 import kotlinx.serialization.Serializable
 import miao.kmirror.jianzhoucat.feature.screen.main.viewmodel.MainViewModel
 import miao.kmirror.jianzhoucat.feature.screen.setting.page.SettingScreen
@@ -43,7 +45,7 @@ fun MainNavScreen(
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Words") },
+                    icon = { Icon(imageVector = RemixIcon.Document.articleFill, contentDescription = "Words") },
                     label = { Text("Words") },
                     selected = currentDestination?.hasRoute<WordNav>() == true,
                     onClick = {
@@ -57,7 +59,7 @@ fun MainNavScreen(
                     }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") },
+                    icon = { Icon(RemixIcon.System.settingsFill, contentDescription = "Settings") },
                     label = { Text("Settings") },
                     selected = currentDestination?.hasRoute<SettingNav>() == true,
                     onClick = {

@@ -21,9 +21,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,6 +34,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.lalilu.RemixIcon
+import com.lalilu.remixicon.Media
+import com.lalilu.remixicon.System
+import com.lalilu.remixicon.media.volumeUpFill
+import com.lalilu.remixicon.system.menuFill
 import miao.kmirror.jianzhoucat.domin.model.WordModel
 import miao.kmirror.jianzhoucat.feature.screen.word.viewmodel.WordViewModel
 import miao.kmirror.jianzhoucat.feature.state.LoadState
@@ -161,7 +163,7 @@ fun WordTitle(
                 )
                 Spacer(modifier = Modifier.width(11.dp))
                 Icon(
-                    imageVector = Icons.Default.Menu,
+                    imageVector = RemixIcon.System.menuFill,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp)
                 )
@@ -183,7 +185,7 @@ fun WordTitle(
                 }
 
                 Icon(
-                    imageVector = Icons.Default.Notifications,
+                    imageVector = RemixIcon.Media.volumeUpFill,
                     contentDescription = null,
                     modifier = Modifier
                         .padding(start = 2.dp)

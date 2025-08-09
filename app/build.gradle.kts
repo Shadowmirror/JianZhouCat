@@ -4,8 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room.plugin)
-    id("com.google.dagger.hilt.android")
-    kotlin("plugin.serialization") version "2.0.21"
+    alias(libs.plugins.hilt.plugin)
+    kotlin("plugin.serialization") version "2.2.0"
 }
 
 android {
@@ -29,11 +29,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) // 或者直接使用字符串 "17"
+            freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
+            // 如果还有其他 Kotlin 特定的编译选项，也可以在这里配置
+            // freeCompilerArgs.add("-Xopt-in=kotlin.RequiresOptIn")
+        }
     }
     buildFeatures {
         compose = true
@@ -54,15 +59,15 @@ dependencies {
 
     implementation(libs.hilt.navigation)
 
-    val nav_version = "2.9.0"
+    // https://mvnrepository.com/artifact/io.github.cy745/remixicon-kmp-android
+    implementation(libs.remixicon.kmp.android)
 
     // Jetpack Compose integration
-    implementation("androidx.navigation:navigation-compose:$nav_version")
-    implementation("com.materialkolor:material-kolor:3.0.0-alpha04")
-
-    implementation("androidx.datastore:datastore-preferences:1.1.7")
-    implementation("io.coil-kt.coil3:coil-compose:3.2.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    implementation(libs.navigation.compose)
+    implementation(libs.material.kolor)
+    implementation(libs.datastore.preferences)
+    implementation(libs.coil.compose)
+    implementation(libs.serialization.json)
 
 
     implementation(libs.androidx.core.ktx)
